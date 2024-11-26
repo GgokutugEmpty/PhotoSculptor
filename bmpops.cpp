@@ -1,3 +1,7 @@
+// 26.11.24
+// Author : A.Goktug
+// Author : bmpops.cpp
+
 #include "head.h"
 #include <map>
 #include <algorithm>
