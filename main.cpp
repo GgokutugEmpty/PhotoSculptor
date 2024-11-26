@@ -1,3 +1,7 @@
+// 26.11.24
+// Author : A.Goktug
+// Author : main.cpp
+
 #include "head.h"
 #include <filesystem>
 #include <fstream>
@@ -10,6 +14,16 @@ int main()
     std::string outputFilePath;
     std::string copyFolderPath = "COPY";
 
+    std::cout << "The software is provided \"AS IS\", without warranty of any kind, express or\n";
+    std::cout << "implied, including but not limited to the warranties of merchantability,\n";
+    std::cout << "fitness for a particular purpose and noninfringement. In no event shall the\n";
+    std::cout << "authors or copyright holders be liable for any claim, damages or other\n";
+    std::cout << "liability, whether in an action of contract, tort or otherwise, arising from,\n";
+    std::cout << "out of or in connection with the software or the use or other dealings in the\n";
+    std::cout << "software.\n\n";
+
+
+    std::cout << "Author:A.Goktug:\n";
 
     std::cout << "Enter the path of the BMP file: ";
     std::getline(std::cin, inputFilePath);
