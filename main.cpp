@@ -1,6 +1,6 @@
 // 26.11.24
 // Author : A.Goktug
-// Author : main.cpp
+// File : main.cpp
 
 #include "head.h"
 #include <filesystem>
