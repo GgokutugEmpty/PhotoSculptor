@@ -47,7 +47,8 @@ public:
     void adjustBrightness(int value);
     void convertTo8Bit();
     void resize(int newWidth, int newHeight);
-
+    void ExtractPixelsToBMP();
+    void addBMP(const BMPImage& other, int startX, int startY, int width, int height);
 private:
     struct Pixel {
         uint8_t blue;
