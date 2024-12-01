@@ -71,6 +71,8 @@ int main()
     << "6. Adjust Brightness\n"
     << "7. Convert to 8-Bit Picture\n"
     << "8. Resize\n"
+    << "9. Add BMP\n"
+    << "10. Add text\n"
     << "Choice: ";
     std::cin >> choice;
 
@@ -124,6 +126,27 @@ int main()
 
         bmpImage.resize(width, height);
     }
+    else if (choice == 9)
+    {
+        std::string overlayPath = "out.bmp";
+        int startX = 50;
+        int startY = 50;
+        int overlayWidth = 225;
+        int overlayHeight = 225;
+
+        std::cout << "Adding overlay BMP image at X: " << startX << ", Y: " << startY << " with size "
+        << overlayWidth << "x" << overlayHeight << std::endl;
+        if (!fs::exists(overlayPath))
+        {
+            std::cerr << "The overlay file does not exist!" << std::endl;
+            return 1;
+        }
+        BMPImage overlayImage(overlayPath);
+        bmpImage.addBMP(overlayImage, startX, startY, overlayWidth, overlayHeight);
+    }
+
+    else if (choice == 10)
+        system("python3 imagetext.py");
     else
     {
         std::cerr << "Invalid choice!" << std::endl;
@@ -141,3 +164,4 @@ int main()
 
     return 0;
 }
+
