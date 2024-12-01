@@ -2,6 +2,7 @@
 // Author : A.Goktug
 // File : bmpops.cpp
 
+
 #include "head.h"
 #include <map>
 #include <algorithm>
@@ -280,5 +281,47 @@ void BMPImage::resize(int newWidth, int newHeight) {
 
     std::cout << "Image has been resized to " << newWidth << "x" << newHeight << "." << std::endl;
 }
+
+
+
+void BMPImage::addBMP(const BMPImage& other, int startX, int startY, int width, int height)
+{
+    
+    if (startX < 0 || startY < 0 || startX + width > dibHeader.width || startY + height > dibHeader.height) {
+        std::cerr << "The second image doesn't fit inside the first image at the given position!" << std::endl;
+        return;
+    }
+
+    
+    if (dibHeader.bitCount != 24 || other.dibHeader.bitCount != 24) {
+        std::cerr << "Both images must be in 24-bit color format!" << std::endl;
+        return;
+    }
+
+    
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            
+            int destX = startX + x;
+            int destY = startY + y;
+
+            
+            if (destX >= 0 && destY >= 0 && destX < dibHeader.width && destY < dibHeader.height) {
+                
+                int destIdx = destY * dibHeader.width + destX;
+                int srcIdx = y * other.dibHeader.width + x;
+
+                
+                pixels[destIdx] = other.pixels[srcIdx];
+            }
+        }
+    }
+
+    
+    std::cout << "Image has been successfully added." << std::endl;
+}
+
+
+
 
 
